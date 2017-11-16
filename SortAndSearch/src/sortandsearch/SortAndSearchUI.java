@@ -175,10 +175,14 @@ public class SortAndSearchUI extends javax.swing.JFrame {
 //            }    
 //
 //        String unsortedInput = builder.toString();
-
-            int unsortedIndex = (numberText.indexOf(this.searchFor.getText())/2)+1;
+            String str = this.searchFor.getText();
+            if(numberText.contains(str)){
+            int unsortedIndex = (numberText.indexOf(str)/2)+1;
+            
            this.index.setText(Integer.toString(unsortedIndex));
-           
+            }else{
+               JOptionPane.showMessageDialog(this, "Number not found", "Sort and Search", JOptionPane.ERROR_MESSAGE); 
+            }
            
            Arrays.sort(numberTextSplit);
           StringBuilder builder = new StringBuilder();
@@ -188,8 +192,14 @@ public class SortAndSearchUI extends javax.swing.JFrame {
 
         String sortedInput = builder.toString();
            this.sortedText.setText(sortedInput);
-           int indexed = sortedInput.indexOf(this.searchFor.getText()) + 1;
+if(sortedInput.contains(str)){
+          int indexed = sortedInput.indexOf(this.searchFor.getText()) + 1;
            this.sortedIndex.setText(Integer.toString(indexed));
+            }else{
+               return;
+                //JOptionPane.showMessageDialog(this, "Number not found", "Sort and Search", JOptionPane.ERROR_MESSAGE); 
+            }           
+           
     }//GEN-LAST:event_searchActionPerformed
 
     private void clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearActionPerformed

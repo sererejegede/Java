@@ -41,18 +41,18 @@ public class Sort {
     
     
     public static void main(String[] args) {
-//        Sort newSort = new Sort();
-//        newSort.inputAccept();
-//        String inputo = newSort.input;
-//        newSort.search(inputo);
-//        newSort.inputToArray();
-//        String inputa = newSort.inputForSort;
-//        newSort.search(inputa);
+        Sort newSort = new Sort();
+        newSort.inputAccept();
+        String inputo = newSort.input;
+        newSort.search(inputo);
+        newSort.inputToArray();
+        String inputa = newSort.inputForSort;
+        newSort.search(inputa);
 //        
-            int arr[] = {1, 4, 6, 2, 7, 2, 1, 0, -5, 20, -6};
-            Arrays.sort(arr);
-            
-            for(int x : arr){System.out.println(x);}
+//            int arr[] = {1, 4, 6, 2, 7, 2, 1, 0, -5, 20, -6};
+//            Arrays.sort(arr);
+//            
+//            for(int x : arr){System.out.println(x);}
     }
 
     
