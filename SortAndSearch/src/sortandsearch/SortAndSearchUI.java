@@ -197,6 +197,7 @@ if(sortedInput.contains(str)){
            this.sortedIndex.setText(Integer.toString(indexed));
             }else{
                return;
+               
                 //JOptionPane.showMessageDialog(this, "Number not found", "Sort and Search", JOptionPane.ERROR_MESSAGE); 
             }           
            
