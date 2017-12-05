@@ -26,3 +26,8 @@ hs_err_pid*
 /SortAndSearch/build/
 /MyFirstWebApp/nbproject/private/
 /MyFirstWebApp/build/
+/MyFirstWebApp/dist/
+/RegApp/nbproject/private/
+/RegApp/build/
+/DevProfile/nbproject/private/
+/DevProfile/build/
