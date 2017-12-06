@@ -22,8 +22,8 @@
     </nav>
   </header>  
   </div> 
-        
-        <form name="preference" action="Login" method="POST">
+        <h1>Welcome <%=request.getAttribute("firstName")%>!</h1>
+        <form name="preference" action="DataAdd" method="POST">
             <input type="hidden" name="anothername" value="<%=request.getAttribute("firstName")%>" />    
 First Option: <select name="first">
             <option>Java</option>
