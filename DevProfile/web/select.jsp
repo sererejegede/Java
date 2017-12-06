@@ -22,6 +22,14 @@
     </nav>
   </header>  
   </div> 
+        <% 
+            if(request.getAttribute("firstName") == null){
+        %>
+        <h1>You must be logged in to input your preference</h1>
+        <%
+            return;
+            }
+        %>
         <h1>Welcome <%=request.getAttribute("firstName")%>!</h1>
         <form name="preference" action="DataAdd" method="POST">
             <input type="hidden" name="anothername" value="<%=request.getAttribute("firstName")%>" />    

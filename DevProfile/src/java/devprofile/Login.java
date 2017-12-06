@@ -36,8 +36,7 @@ public class Login extends HttpServlet {
 //            out.println("Connection created");
             Statement statement = connection.createStatement();
             String sql_check = "SELECT fname, username, password FROM dev_credentials WHERE username = '"+name+"'";
-            String sql_preference = "UPDATE dev_credentials SET firstLang = '"+firstOption+"', secondLang = '"+secondOption+", thirdLang = '"+thirdOption+"' WHERE fname = '"+anothername+"'";
-            out.println(sql_preference);
+          
             
             ResultSet rs = statement.executeQuery(sql_check);
 

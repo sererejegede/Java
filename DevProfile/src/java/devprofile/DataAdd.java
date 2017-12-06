@@ -44,8 +44,8 @@ public class DataAdd extends HttpServlet {
             statement.execute(sql_preference);
             
                 out.println("Preference noted");
-            
-           
+//            String sql_count = "SELECT COUNT(*) FROM dev_credentials WHERE firstLang = '"+Java+"'";
+//           ResultSet result = statement.executeQuery(sql_count);
 
             
 //            rs.close();
