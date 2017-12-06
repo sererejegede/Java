@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 
 public class Login extends HttpServlet {
@@ -21,29 +22,33 @@ public class Login extends HttpServlet {
         processRequest(request, response);
          String name = request.getParameter("userName");
         String password =request.getParameter("password");
+        String firstOption = request.getParameter("first");
+        String secondOption = request.getParameter("second");
+        String thirdOption = request.getParameter("third");
         
+        String anothername = request.getParameter("anothername");
         String DB_URL = "jdbc:mysql://localhost/registration";
         PrintWriter out = response.getWriter();
-//        out.println(name);
+
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection connection = DriverManager.getConnection(DB_URL, "root", "");
 //            out.println("Connection created");
             Statement statement = connection.createStatement();
             String sql_check = "SELECT fname, username, password FROM dev_credentials WHERE username = '"+name+"'";
-//            out.println(sql_statement);
+            String sql_preference = "UPDATE dev_credentials SET firstLang = '"+firstOption+"', secondLang = '"+secondOption+", thirdLang = '"+thirdOption+"' WHERE fname = '"+anothername+"'";
+            out.println(sql_preference);
             
             ResultSet rs = statement.executeQuery(sql_check);
-//            Boolean errtu = rs.next();
+
            rs.next();
             String username = rs.getString("username");
             String pass = rs.getString("password");
             String firstName = rs.getString("fname");
-            String errpass = "Username or password incorrect";
-            String errpass2 = "Username incorrect";
+          
            if (name.equals(username)){
              if (password.equals(pass)){
-                RequestDispatcher rd = request.getRequestDispatcher("login-success.jsp");
+                RequestDispatcher rd = request.getRequestDispatcher("select.jsp");
                 request.setAttribute("firstName", firstName);
                 rd.forward(request, response);  
              } else{
