@@ -12,6 +12,14 @@
         <servlet-name>DataAdd</servlet-name>
         <servlet-class>devprofile.DataAdd</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Statistics</servlet-name>
+        <servlet-class>devprofile.Statistics</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>quicktest</servlet-name>
+        <servlet-class>devprofile.quicktest</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
@@ -23,6 +31,14 @@
     <servlet-mapping>
         <servlet-name>DataAdd</servlet-name>
         <url-pattern>/DataAdd</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Statistics</servlet-name>
+        <url-pattern>/Statistics</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>quicktest</servlet-name>
+        <url-pattern>/quicktest</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

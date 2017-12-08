@@ -38,52 +38,40 @@ public class Registration extends HttpServlet {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection connection = DriverManager.getConnection(DB_URL, "root", "");
-//            out.println("Connection created");
+            
             Statement statement = connection.createStatement();
 
 //            out.println(sql_statement);
-            String sql_add = "INSERT INTO dev_credentials (fname, lname, username, password) VALUES ('" + fname + "','" + lname + "','" + userName + "','" + password + "')";
+            
 //            out.println(sql_add);
 
 //          ***************CHECKING IF USER EXISTS*******************
 
             String sql_check = "SELECT username, password FROM dev_credentials WHERE username = '" + userName + "'";
             ResultSet rs = statement.executeQuery(sql_check);
+            
             if(rs.next()) {
                 String errpass = "User already exists";
                 RequestDispatcher rd = request.getRequestDispatcher("create.jsp");
                 request.setAttribute("errpass", errpass);
                 rd.forward(request, response);
             } else {
-                statement.executeUpdate(sql_add);
+                
+                String sql_add = "INSERT INTO dev_credentials (fname, lname, username, password) VALUES ('" + fname + "','" + lname + "','" + userName + "','" + password + "')";
+//        out.println(sql_add);        
+//                out.println("Still good...");
+//                out.println(sql_add);
+               try{ statement.execute(sql_add);}catch (SQLException e){}
+               
                 String success = "Account Created";
                 RequestDispatcher rd = request.getRequestDispatcher("create.jsp");
                 request.setAttribute("success", success);
                 rd.forward(request, response);
+               
+               
             }
-//                String username = rs.getString("username");
-//
-//                if (userName.equals(username)) {
-//                    out.println("User already exists");
-//                    
-//                }else {
-//                statement.executeUpdate(sql_add);
-//                    out.println("User created");
-//                }
 
-//           if(rs.next()){
-//            String user_name = rs.getString("username");
-//            String pass = rs.getString("password");
-//           
-////            if (username.equals(user_name) && password.equals(pass)){
-////                RequestDispatcher rd = request.getRequestDispatcher("login-success.jsp");
-////                rd.forward(request, response);
-////            }
-////            }else{
-////                response.sendRedirect("login-error.jsp");
-////            }
-//           }
-//            rs.close();
+            rs.close();
                 statement.close();
                 connection.close();
             

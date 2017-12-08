@@ -39,19 +39,18 @@ public class DataAdd extends HttpServlet {
             Statement statement = connection.createStatement();
             
             String sql_preference = "UPDATE dev_credentials SET firstLang = '"+firstOption+"', secondLang = '"+secondOption+"', thirdLang = '"+thirdOption+"' WHERE fname = '"+anothername+"'";
-//            out.println(sql_preference);
+            
             
             statement.execute(sql_preference);
             
-                out.println("Preference noted");
-//            String sql_count = "SELECT COUNT(*) FROM dev_credentials WHERE firstLang = '"+Java+"'";
-//           ResultSet result = statement.executeQuery(sql_count);
+            RequestDispatcher dis = request.getRequestDispatcher("statistics.jsp");
+            request.setAttribute("firstName", anothername);
+            dis.forward(request, response);
 
-            
-//            rs.close();
             statement.close();
             connection.close();
-//        } catch (IOException | ClassNotFoundException | SQLException | ServletException e) {
+
+            
         }catch (SQLException se){
                     se.printStackTrace();
            }catch (Exception e){

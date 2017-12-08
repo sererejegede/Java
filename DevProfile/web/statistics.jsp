@@ -8,10 +8,10 @@
         <link href="halice/layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
         <link rel="stylesheet" href="basic-90/styles/bootstrap.min.css" type="text/css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Login | Dev Cred</title>
+        <title>Statistics | Dev Cred</title>
     </head>
     <body>
- <div class="bgded overlay" style="background-image:url('dev_edited.jpg');"> 
+   <div class="bgded overlay" style="background-image:url('dev_edited.jpg');"> 
   <!-- ################################################################################################ -->
   <div class="wrapper row0">
     <div id="topbar" class="hoc clear"> 
@@ -33,33 +33,47 @@
     </div>
   </div>
   <!-- ################################################################################################ -->
-</div>    
-        <div class="row">
-            <div class="col-4 first"></div>
-            <div class="col-4">    
-        <form action="Login" method="POST">
-            <input type="text" name="userName" placeholder="Enter Username" required="true" />
-            <input type="password" name="password" placeholder="Enter Password" required="true" /><br>
-            <div class="div1"> <button class="btn btn-color" type="submit" value="Submit">Submit</button>  <button class="btn btn-color" type="reset" value="Reset">Reset</button></div>
-        </form>
-        </div>
-        <div class="col-4"></div>    
-        </div><br>
-        <span class="div1">Not a member? <a href="create.jsp">Create Account</a></span>
+</div>
+  
+  <div class="row"  >
+    <div class="col-2"></div>
+    <div class="col-8">
         <% 
-        Object errpass2 = request.getAttribute("errpass2");
-        Object errpass = request.getAttribute("errpass");
-//        if (errpass2 == null){
-//            return;
-//        }
-//        else 
-          
-        
-        if(errpass == null && errpass2 == null){
-        return;
-        } else
+            if(request.getAttribute("firstName") == null){
         %>
-        <h3 class="div1">Username or password incorrect</h3>
-       
-    </body>
-</html>
+        <div class="topmargin"> <h1>You must be logged in to input your preference</h1></div>
+        <%
+            return;
+            }
+        %>
+        <div class="topmargin"><h1 class='fl_right'>${firstName}'s Profile</h1></div><hr>
+        <form action="Statistics" method="POST">
+            <select name="firstPref">
+            <option>Java</option>
+            <option>FORTRAN</option>
+            <option>Python</option>
+            <option>C</option>
+            <option>C++</option>
+            <option>C#</option>
+            <option>PHP</option>
+            <option>JavaScript</option>
+            <option>Swift</option>
+            <option>Arduino</option>
+            <option>Ruby</option>
+            <option>MATLAB</option>
+            <option>HTML</option>
+            <option>Perl</option>
+            <option>SQL</option>
+          </select><br><br>
+          <input type="submit" value="Submit" name="submit" />
+        </form>
+    </div>
+    <div class="col-2"></div>
+  </div>
+        <% 
+            if(request.getAttribute("count") == null){
+            return;
+            }
+        %>
+        <p> <b>${count}</b> developers chose <b>${firstPref}</b> as their most preferred programming language</p>
+        
