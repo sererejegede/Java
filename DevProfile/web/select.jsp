@@ -46,6 +46,10 @@
             <div class="col-2"></div>
             <div class="col-8">
         <div class="topmargin"> <h1>Welcome ${firstName}!</h1></div><hr>
+        <article>
+            <p>Please select your three most favorite programming language.</p>
+            <p>This is purely for statistical purposes. Your personal details will never be used without your permission.</p>
+        </article>
         <form name="preference" action="DataAdd" method="POST">
             <input type="hidden" name="anothername" value="<%=request.getAttribute("firstName")%>" />
             <table class="styled">

@@ -23,6 +23,13 @@
       
     </article>
     <div class="fl_right fl_right_margin">
+        <%
+            if(request.getAttribute("count") != null){   
+        %>
+        <h4>Did you know that ${count} developers prefer ${firstPref}?</h4>
+        <%
+            }
+        %>
         <ul class="nospace inline pushright">
           <li><a class="btn" href="#">Y</a></li>
           <li><a class="btn inverse" href="#">N</a></li>

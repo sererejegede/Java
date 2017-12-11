@@ -26,6 +26,8 @@ public class Statistics extends HttpServlet {
         PrintWriter out = response.getWriter();
         
         String firstPref = request.getParameter("firstPref");
+//        String secondPref = request.getParameter("firstPref");
+//        String thirdPref = request.getParameter("firstPref");
 //        String secondPref = request.getParameter("");
 //        String thirdPref = request.getParameter("");
         
@@ -36,13 +38,15 @@ public class Statistics extends HttpServlet {
             Statement statement = connection.createStatement();
             
             String sql_count = "SELECT COUNT(*) AS 'count' FROM dev_credentials WHERE firstLang = '"+firstPref+"'";
+//            String sql_count = "SELECT COUNT(*) AS 'count' FROM dev_credentials WHERE firstLang = '"+secondPref+"'";
+//            String sql_count = "SELECT COUNT(*) AS 'count' FROM dev_credentials WHERE firstLang = '"+thirdPref+"'";
 //            out.println(sql_count);
             
             ResultSet result = statement.executeQuery(sql_count);
 //            statement.execute(sql_count);
             result.next();
             int count = result.getInt("count");
-                
+//                out.println(count);
                 RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
                 request.setAttribute("count", count);
                 request.setAttribute("firstPref", firstPref);

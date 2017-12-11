@@ -46,7 +46,17 @@
             return;
             }
         %>
-        <div class="topmargin"><h1 class='fl_right'>${firstName}'s Profile</h1></div><hr>
+        <div class="topmargin">
+            <h1 class='fl_right'>${firstName}'s Profile</h1>
+            <hr>
+            <div class="fl_left">
+            <h4>Thank you for participating in this survey. Your preference has been noted.</h4>
+<!--            <p>If you wish to change your preference, please click <a href="select.jsp">here</a></p>-->
+            <p>Pick a language to see how many developers chose it as their first language</p>
+            </div>
+            
+        </div>
+            
         <form action="Statistics" method="POST">
             <select name="firstPref">
             <option>Java</option>
@@ -64,7 +74,7 @@
             <option>HTML</option>
             <option>Perl</option>
             <option>SQL</option>
-          </select><br><br>
+          </select>
           <input type="submit" value="Submit" name="submit" />
         </form>
     </div>

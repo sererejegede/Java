@@ -17,8 +17,8 @@
         <servlet-class>devprofile.Statistics</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>quicktest</servlet-name>
-        <servlet-class>devprofile.quicktest</servlet-class>
+        <servlet-name>NewReg</servlet-name>
+        <servlet-class>devprofile.NewReg</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
@@ -37,8 +37,8 @@
         <url-pattern>/Statistics</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>quicktest</servlet-name>
-        <url-pattern>/quicktest</url-pattern>
+        <servlet-name>NewReg</servlet-name>
+        <url-pattern>/NewReg</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

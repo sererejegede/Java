@@ -47,16 +47,17 @@
         <div class="col-4"></div> 
         </div>
             <br>
-            <span class="div1"> Already a Member?<a href="login.jsp"> Login</a></span>
+            <!--<span class="div1"> Already a Member?<a href="login.jsp"> Login</a></span>-->
          <%
          Object success = request.getAttribute("success");
-         if(success == null){
-         return;
-         } else
+         if(success != null){
+         
+         
          %>
          <h1 class="div1"> <%=success %></h1>
          <h4 class="div1"> <a href="login.jsp">Login</a></h4>
         <% 
+        }    
         Object errpass = request.getAttribute("errpass");
         if(errpass == null){
         return;

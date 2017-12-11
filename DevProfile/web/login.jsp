@@ -47,19 +47,20 @@
         </div><br>
         <span class="div1">Not a member? <a href="create.jsp">Create Account</a></span>
         <% 
-        Object errpass2 = request.getAttribute("errpass2");
-        Object errpass = request.getAttribute("errpass");
-//        if (errpass2 == null){
-//            return;
-//        }
-//        else 
-          
-        
-        if(errpass == null && errpass2 == null){
-        return;
-        } else
+        Object passErr = request.getAttribute("passErr");
+        if(passErr != null){
         %>
-        <h3 class="div1">Username or password incorrect</h3>
-       
+        <h3 class="div1">Incorrect Password</h3>
+        <%
+            }
+        %>
+        <%
+        Object userErr = request.getAttribute("userErr");
+        if(userErr != null){
+        %>
+        <h3 class="div1">User does not exist</h3>
+        <%
+            }
+        %>
     </body>
 </html>

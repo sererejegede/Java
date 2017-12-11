@@ -36,10 +36,13 @@ public class Login extends HttpServlet {
             
             ResultSet rs = statement.executeQuery(sql_check);
 
-           rs.next();
+           if(rs.next()){
             String username = rs.getString("username");
             String pass = rs.getString("password");
             String firstName = rs.getString("fname");
+            String passErr = "Incorrect Password";
+            
+//            String passErr = "Incorrect Password";
           
            if (name.equals(username)){
              if (password.equals(pass)){
@@ -47,13 +50,18 @@ public class Login extends HttpServlet {
                 request.setAttribute("firstName", firstName);
                 rd.forward(request, response);  
              } else{
-                 out.println("Incorrect Password");
+                RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
+                request.setAttribute("passErr", passErr);
+                rd.forward(request, response);
              } 
-           } else {
-               out.println("Incorrect Username");
-           }
+           } 
 
-            
+           } else {
+               String userErr = "Incorrect Username";
+               RequestDispatcher reqdisp = request.getRequestDispatcher("login.jsp");
+               request.setAttribute("userErr", userErr);
+               reqdisp.forward(request, response);
+           }  
             
             rs.close();
             statement.close();
