@@ -18,7 +18,7 @@
     <!-- ################################################################################################ -->
     <article>
       <h3 class="heading">The Developer's Choice</h3>
-      <p>This is a simple application to record the most preferred programming language of developers</p>
+      <p>A simple application to record the most preferred programming language of developers</p>
       <!--<p class="font-x1 uppercase bold">Libero cursus malesuada etiam</p>-->
       
     </article>

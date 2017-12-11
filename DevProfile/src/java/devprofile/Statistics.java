@@ -58,10 +58,7 @@ public class Statistics extends HttpServlet {
             statement.close();
             connection.close();
 //        } catch (IOException | ClassNotFoundException | SQLException | ServletException e) {
-        }catch (SQLException se){
-                    se.printStackTrace();
-           }catch (Exception e){
-               e.printStackTrace();
+        }catch (SQLException | IOException | ClassNotFoundException | ServletException se){
            }
     }
         
