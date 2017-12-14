@@ -26,7 +26,7 @@
         <%
             if(request.getAttribute("count") != null){   
         %>
-        <h4>Did you know that ${count} developers prefer ${firstPref}?</h4>
+        <h4>Did you know that <i>${count}</i> developers prefer <i>${firstPref}</i>?</h4>
         <%
             }
         %>

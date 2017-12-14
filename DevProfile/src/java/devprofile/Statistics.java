@@ -26,7 +26,7 @@ public class Statistics extends HttpServlet {
         PrintWriter out = response.getWriter();
         
         String firstPref = request.getParameter("firstPref");
-//        String secondPref = request.getParameter("firstPref");
+        String secondPref = request.getParameter("firstPref");
 //        String thirdPref = request.getParameter("firstPref");
 //        String secondPref = request.getParameter("");
 //        String thirdPref = request.getParameter("");
@@ -36,7 +36,7 @@ public class Statistics extends HttpServlet {
             Connection connection = DriverManager.getConnection(DB_URL, "root", "");
 //            out.println("Connection created");
             Statement statement = connection.createStatement();
-            
+            String sql_count2 = "SELECT COUNT(*) AS 'count2' FROM dev_credentials WHERE secondLand = '"+secondPref+"'";
             String sql_count = "SELECT COUNT(*) AS 'count' FROM dev_credentials WHERE firstLang = '"+firstPref+"'";
 //            String sql_count = "SELECT COUNT(*) AS 'count' FROM dev_credentials WHERE firstLang = '"+secondPref+"'";
 //            String sql_count = "SELECT COUNT(*) AS 'count' FROM dev_credentials WHERE firstLang = '"+thirdPref+"'";
