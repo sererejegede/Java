@@ -30,10 +30,12 @@ public class Statistics extends HttpServlet {
 //        String thirdPref = request.getParameter("firstPref");
 //        String secondPref = request.getParameter("");
 //        String thirdPref = request.getParameter("");
+
+
         
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            Connection connection = DriverManager.getConnection(DB_URL, "root", "");
+            Connection connection = DriverManager.getConnection(Constants.DB_URL, Constants.DB_USERNAME, Constants.DB_PASSWORD);
 //            out.println("Connection created");
             Statement statement = connection.createStatement();
             String sql_count2 = "SELECT COUNT(*) AS 'count2' FROM dev_credentials WHERE secondLand = '"+secondPref+"'";

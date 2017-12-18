@@ -37,7 +37,7 @@ public class Registration extends HttpServlet {
         String DB_URL = "jdbc:mysql://localhost/registration";
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            Connection connection = DriverManager.getConnection(DB_URL, "root", "");
+            Connection connection = DriverManager.getConnection(Constants.DB_URL, Constants.DB_USERNAME, Constants.DB_PASSWORD);
             
             Statement statement = connection.createStatement();
 

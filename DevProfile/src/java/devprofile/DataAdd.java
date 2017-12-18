@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-public class DataAdd extends HttpServlet {
+public class DataAdd extends HttpServlet{
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {}
@@ -29,12 +29,12 @@ public class DataAdd extends HttpServlet {
         String thirdOption = request.getParameter("third");
         
         String anothername = request.getParameter("anothername");
-        String DB_URL = "jdbc:mysql://localhost/registration";
+        
         PrintWriter out = response.getWriter();
         
     try {
             Class.forName("com.mysql.jdbc.Driver");
-            Connection connection = DriverManager.getConnection(DB_URL, "root", "");
+            Connection connection = DriverManager.getConnection(Constants.DB_URL, Constants.DB_USERNAME, Constants.DB_PASSWORD);
 //            out.println("Connection created");
             Statement statement = connection.createStatement();
             

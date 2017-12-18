@@ -28,7 +28,7 @@ public class Login extends HttpServlet {
 
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            Connection connection = DriverManager.getConnection(DB_URL, "root", "");
+            Connection connection = DriverManager.getConnection(Constants.DB_URL, Constants.DB_USERNAME, Constants.DB_PASSWORD);
 
             Statement statement = connection.createStatement();
             String sql_check = "SELECT fname, username, password FROM dev_credentials WHERE username = '"+name+"'";

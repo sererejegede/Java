@@ -17,7 +17,7 @@
   <div id="pageintro" class="hoc"> 
     <!-- ################################################################################################ -->
     <article>
-      <h3 class="heading">The Developer's Choice</h3>
+        <h3 class="heading"><a href="index.jsp">The Developer's Choice</a></h3>
       <p>A simple application to record the most preferred programming language of developers</p>
       <!--<p class="font-x1 uppercase bold">Libero cursus malesuada etiam</p>-->
       
@@ -51,7 +51,7 @@
       </div>-->
       <div class="fl_right">
         <ul>
-          <li><a href="index.html"><i class="fa fa-lg fa-home"></i></a></li>
+<!--          <li><a href="index.html"><i class="fa fa-lg fa-home"></i></a></li>-->
           <li><a href="login.jsp">Login</a></li>
           <li><a href="create.jsp">Register</a></li>
         </ul>
