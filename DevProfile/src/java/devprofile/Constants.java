@@ -14,6 +14,7 @@ public interface Constants {
     String DB_PASSWORD = "";
     String DB_USERNAME = "root";
     String DB_URL = "jdbc:mysql://localhost/registration";
+    String DRIVER = "com.mysql.jdbc.Driver";
     
     
     

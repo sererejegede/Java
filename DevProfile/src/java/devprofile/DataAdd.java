@@ -33,10 +33,8 @@ public class DataAdd extends HttpServlet{
         PrintWriter out = response.getWriter();
         
     try {
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection connection = DriverManager.getConnection(Constants.DB_URL, Constants.DB_USERNAME, Constants.DB_PASSWORD);
-//            out.println("Connection created");
-            Statement statement = connection.createStatement();
+            Connection connection = DBConnection.getConnection();
+            Statement statement = DBConnection.cStatement();
             
             String sql_preference = "UPDATE dev_credentials SET firstLang = '"+firstOption+"', secondLang = '"+secondOption+"', thirdLang = '"+thirdOption+"' WHERE fname = '"+anothername+"'";
             

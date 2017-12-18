@@ -36,14 +36,8 @@ public class Registration extends HttpServlet {
 
         String DB_URL = "jdbc:mysql://localhost/registration";
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection connection = DriverManager.getConnection(Constants.DB_URL, Constants.DB_USERNAME, Constants.DB_PASSWORD);
-            
-            Statement statement = connection.createStatement();
-
-//            out.println(sql_statement);
-            
-//            out.println(sql_add);
+            Connection connection = DBConnection.getConnection();
+            Statement statement = DBConnection.cStatement();
 
 //          ***************CHECKING IF USER EXISTS*******************
 
@@ -75,10 +69,7 @@ public class Registration extends HttpServlet {
                 statement.close();
                 connection.close();
             
-        } catch (SQLException se) {
-            se.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (SQLException | IOException | ServletException se) {
         }
     }
 }

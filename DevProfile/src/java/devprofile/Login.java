@@ -1,5 +1,6 @@
 package devprofile;
 
+
 import java.io.*;
 import java.sql.*;
 import javax.servlet.RequestDispatcher;
@@ -23,14 +24,13 @@ public class Login extends HttpServlet {
          String name = request.getParameter("userName");
         String password =request.getParameter("password");
 
-        String DB_URL = "jdbc:mysql://localhost/registration";
+        
         PrintWriter out = response.getWriter();
 
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection connection = DriverManager.getConnection(Constants.DB_URL, Constants.DB_USERNAME, Constants.DB_PASSWORD);
 
-            Statement statement = connection.createStatement();
+            Connection connection = DBConnection.getConnection();
+            Statement statement = DBConnection.cStatement();
             String sql_check = "SELECT fname, username, password FROM dev_credentials WHERE username = '"+name+"'";
           
             
@@ -67,10 +67,7 @@ public class Login extends HttpServlet {
             statement.close();
             connection.close();
 //        } catch (IOException | ClassNotFoundException | SQLException | ServletException e) {
-        }catch (SQLException se){
-                    se.printStackTrace();
-           }catch (Exception e){
-               e.printStackTrace();
+        }catch (SQLException | IOException | ServletException se){
            }
       } 
      

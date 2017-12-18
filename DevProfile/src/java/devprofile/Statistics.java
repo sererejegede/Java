@@ -22,7 +22,7 @@ public class Statistics extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-        String DB_URL = "jdbc:mysql://localhost/registration";
+        
         PrintWriter out = response.getWriter();
         
         String firstPref = request.getParameter("firstPref");
@@ -34,10 +34,8 @@ public class Statistics extends HttpServlet {
 
         
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection connection = DriverManager.getConnection(Constants.DB_URL, Constants.DB_USERNAME, Constants.DB_PASSWORD);
-//            out.println("Connection created");
-            Statement statement = connection.createStatement();
+            Connection connection = DBConnection.getConnection();
+            Statement statement = DBConnection.cStatement();
             String sql_count2 = "SELECT COUNT(*) AS 'count2' FROM dev_credentials WHERE secondLand = '"+secondPref+"'";
             String sql_count = "SELECT COUNT(*) AS 'count' FROM dev_credentials WHERE firstLang = '"+firstPref+"'";
 //            String sql_count = "SELECT COUNT(*) AS 'count' FROM dev_credentials WHERE firstLang = '"+secondPref+"'";
@@ -60,7 +58,7 @@ public class Statistics extends HttpServlet {
             statement.close();
             connection.close();
 //        } catch (IOException | ClassNotFoundException | SQLException | ServletException e) {
-        }catch (SQLException | IOException | ClassNotFoundException | ServletException se){
+        }catch (SQLException | IOException | ServletException se){
            }
     }
         
