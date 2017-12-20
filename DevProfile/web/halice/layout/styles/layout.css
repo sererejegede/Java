@@ -26,7 +26,8 @@ File: Layout CSS
 --------------------------------------------------------------------------------------------------------------- */
 #pageintro{padding:100px 0 130px;}
 
-#pageintro article{display:block; max-width:50%;}
+#pageintro article{display:block; width:100%;}
+#pageintro article div{display: block; width: 500px}
 #pageintro article *{word-wrap:break-word;}
 #pageintro .heading{margin-bottom:20px; font-size:4rem;}
 #pageintro p:first-of-type{margin-bottom:30px;}
@@ -226,6 +227,8 @@ th, td{padding:5px 8px;}
 td{border-width:0 1px;}
 
 
+
+
 /* Gallery
 --------------------------------------------------------------------------------------------------------------- */
 #gallery{display:block; width:100%; margin-bottom:50px;}
@@ -274,7 +277,7 @@ input:focus, textarea:focus, *:required:focus{border-color:#36D68C;}
 
 
 /* Rows */
-.row{margin-top: 70px;}
+
 .row0, .row0 a{color:#FFFFFF;}
 .row1{color:#474747; background-color:#FFFFFF; border-color:#F6F6F6;}
 .row2{color:#CBCBCB; background-color:#F6F6F6;}
@@ -314,13 +317,15 @@ input:focus, textarea:focus, *:required:focus{border-color:#36D68C;}
 #footer button{color:#FFFFFF; background-color:#36D68C;}
 
 .fl_right li {font-size: 30px;}
-.fl_right_margin{margin-top: 50px}
+.fl_right_margin{margin-top: 250px}
 .fl_right li a{text-align: center}
 .fl_right li a:hover{color: #36D68C;}
 .topmargin{margin-top: 50px}
 table{font-size: 120%;width: 500px}
 table tr {background-color: #36D68C; background-color: white}
 .styled select{overflow: hidden; border-radius: 5px}
+
+
 
 /* Navigation */
 #mainav li a{color:inherit;}
@@ -365,8 +370,8 @@ table a, #comments a{background-color:inherit;}
 
 /* Max Wrapper Width - Laptop, Desktop etc.
 --------------------------------------------------------------------------------------------------------------- */
-@media screen and (min-width:978px){
-	.hoc{max-width:978px;}
+@media screen and (min-width:1440px){
+	.hoc{max-width:1440px;}
 }
 
 

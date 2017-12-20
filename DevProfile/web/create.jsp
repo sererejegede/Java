@@ -36,7 +36,7 @@
        <div class="row">
             <div class="col-4 first"></div>
             <div class="col-4">    
-        <form action="Registration" method="POST">
+        <form action="Login" method="POST">
             <input type="text" name="fname" placeholder="First Name" required="true"/><br>
             <input type="text" name="lname" placeholder="Last Name" /><br>            
             <input type="text" name="username" placeholder="Username" required="true"/><br>
@@ -51,19 +51,19 @@
          <%
          Object success = request.getAttribute("success");
          if(success != null){
-         
-         
+                 
          %>
          <h1 class="div1"> <%=success %></h1>
          <h4 class="div1"> <a href="login.jsp">Login</a></h4>
         <% 
         }    
         Object errpass = request.getAttribute("errpass");
-        if(errpass == null){
-        return;
-        } else
+        if(errpass != null){
+        
         %>
         <h1 class='div1'> <%=errpass %></h1>
-       
+       <%
+           }
+       %>
     </body>
 </html>

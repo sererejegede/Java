@@ -1,8 +1,9 @@
 package devprofile;
 
 
+import devprofile.auth.LoginService;
+import devprofile.auth.RegistrationService;
 import java.io.*;
-import java.sql.*;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -21,54 +22,62 @@ public class Login extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-         String name = request.getParameter("userName");
-        String password =request.getParameter("password");
-
         
         PrintWriter out = response.getWriter();
-
-        try {
-
-            Connection connection = DBConnection.getConnection();
-            Statement statement = DBConnection.cStatement();
-            String sql_check = "SELECT fname, username, password FROM dev_credentials WHERE username = '"+name+"'";
-          
+        
+        String name = request.getParameter("userName");
+        String password =request.getParameter("password");
+        String fname = request.getParameter("fname");
+        String lname = request.getParameter("lname");
+        String userName = request.getParameter("username");
+        
+        if (name != null && password != null) {
             
-            ResultSet rs = statement.executeQuery(sql_check);
-
-           if(rs.next()){
-            String username = rs.getString("username");
-            String pass = rs.getString("password");
-            String firstName = rs.getString("fname");
-            String passErr = "Incorrect Password";
-            
-//            String passErr = "Incorrect Password";
-          
-           if (name.equals(username)){
-             if (password.equals(pass)){
+        LoginService loginService = new LoginService();
+        int result = loginService.authenticate(name, password);
+       
+        switch (result) {
+            case 1:
                 RequestDispatcher rd = request.getRequestDispatcher("select.jsp");
-                request.setAttribute("firstName", firstName);
-                rd.forward(request, response);  
-             } else{
-                RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
+                request.setAttribute("firstName", loginService.firstName(name));
+                rd.forward(request, response); 
+                break;
+            case 2:
+                String passErr = "Incorrect Password";
+                RequestDispatcher rd2 = request.getRequestDispatcher("login.jsp");
                 request.setAttribute("passErr", passErr);
-                rd.forward(request, response);
-             } 
-           } 
+                rd2.forward(request, response);
+                break;
+            case 3:
+                String userErr = "User does not exists";
+                RequestDispatcher rd3 = request.getRequestDispatcher("login.jsp");
+                request.setAttribute("userErr", userErr);
+                rd3.forward(request, response);
+                break;
+            default:
+                break;
 
-           } else {
-               String userErr = "Incorrect Username";
-               RequestDispatcher reqdisp = request.getRequestDispatcher("login.jsp");
-               request.setAttribute("userErr", userErr);
-               reqdisp.forward(request, response);
-           }  
+        }    
+        }
+        
+        if (fname != null && lname != null) {
             
-            rs.close();
-            statement.close();
-            connection.close();
-//        } catch (IOException | ClassNotFoundException | SQLException | ServletException e) {
-        }catch (SQLException | IOException | ServletException se){
-           }
+        
+        RegistrationService registrationService = new RegistrationService();
+        int register = registrationService.registerer(fname, lname, userName, password);
+//        out.println(register);
+            if (register == 0) {
+                String errpass = "User already exists";
+                RequestDispatcher rd = request.getRequestDispatcher("create.jsp");
+                request.setAttribute("errpass", errpass);
+                rd.forward(request, response);
+            }else if (register == 1) {
+                String success = "Account Created";
+                RequestDispatcher rd = request.getRequestDispatcher("create.jsp");
+                request.setAttribute("success", success);
+                rd.forward(request, response);
+            }
+        }
       } 
      
     }

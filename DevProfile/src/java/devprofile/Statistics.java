@@ -1,7 +1,9 @@
 package devprofile;
 
+import devprofile.auth.StatisticsService;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Array;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -25,41 +27,49 @@ public class Statistics extends HttpServlet {
         
         PrintWriter out = response.getWriter();
         
-        String firstPref = request.getParameter("firstPref");
-        String secondPref = request.getParameter("firstPref");
-//        String thirdPref = request.getParameter("firstPref");
-//        String secondPref = request.getParameter("");
-//        String thirdPref = request.getParameter("");
+//        String firstPref = request.getParameter("firstPref");
+        String[] languages = Constants.LANGUAGES;
+        StatisticsService statisticsService = new StatisticsService();
+            
+            for (String language : languages) {
+           int count = statisticsService.counter(language);
+           out.println(language+": "+count);
+        }
+            
+            
+            
+            
+        
+        
 
 
         
-        try {
-            Connection connection = DBConnection.getConnection();
-            Statement statement = DBConnection.cStatement();
-            String sql_count2 = "SELECT COUNT(*) AS 'count2' FROM dev_credentials WHERE secondLand = '"+secondPref+"'";
-            String sql_count = "SELECT COUNT(*) AS 'count' FROM dev_credentials WHERE firstLang = '"+firstPref+"'";
-//            String sql_count = "SELECT COUNT(*) AS 'count' FROM dev_credentials WHERE firstLang = '"+secondPref+"'";
-//            String sql_count = "SELECT COUNT(*) AS 'count' FROM dev_credentials WHERE firstLang = '"+thirdPref+"'";
-//            out.println(sql_count);
-            
-            ResultSet result = statement.executeQuery(sql_count);
-//            statement.execute(sql_count);
-            result.next();
-            int count = result.getInt("count");
-//                out.println(count);
-                RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
-                request.setAttribute("count", count);
-                request.setAttribute("firstPref", firstPref);
-                rd.forward(request, response);  
+//        try {
+//            Connection connection = DBConnection.getConnection();
+//            Statement statement = DBConnection.cStatement();
+////            String sql_count2 = "SELECT COUNT(*) AS 'count2' FROM dev_credentials WHERE secondLand = '"+secondPref+"'";
+//            String sql_count = "SELECT COUNT(*) AS 'count' FROM dev_credentials WHERE firstLang = '"+firstPref+"'";
+////            String sql_count = "SELECT COUNT(*) AS 'count' FROM dev_credentials WHERE firstLang = '"+secondPref+"'";
+////            String sql_count = "SELECT COUNT(*) AS 'count' FROM dev_credentials WHERE firstLang = '"+thirdPref+"'";
+////            out.println(sql_count);
+//            
+//            ResultSet result = statement.executeQuery(sql_count);
+////            statement.execute(sql_count);
+//            result.next();
+//            int count = result.getInt("count");
+////                out.println(count);
+//                RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+//                request.setAttribute("count", count);
+//                request.setAttribute("firstPref", firstPref);
+//                rd.forward(request, response);  
            
-
+          
             
-            result.close();
-            statement.close();
-            connection.close();
+//            result.close();
+//            statement.close();
+//            connection.close();
 //        } catch (IOException | ClassNotFoundException | SQLException | ServletException e) {
-        }catch (SQLException | IOException | ServletException se){
-           }
+//        }catch (SQLException se){}
     }
         
     }
